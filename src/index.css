@@ -1,0 +1,10 @@
+body {
+    background-color: rgb(28, 28, 85);
+}
+
+.uppername {
+    color: rgb(47, 75, 234);
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
