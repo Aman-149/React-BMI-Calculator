@@ -3,6 +3,7 @@ import React,{ useState } from 'react'
 export const App = () => {
   const [height,setHeight]=useState('')
   const [weight,setWeight]=useState('')
+  const [message, setMessage] = useState('')
   const [bmi,setbmi]=useState(null)
 
   const handleSubmit = (e) =>{
@@ -14,11 +15,22 @@ export const App = () => {
   const h= height/100
   const value =(weight/(h*h)).toFixed(2)
   setbmi(value)
+  
+  if (value < 18.5) {
+  setMessage("Underweight  You may need to gain some weight.")
+} else if (value >= 18.5 && value < 25) {
+  setMessage("Normal  You have a healthy weight. Keep it up!")
+} else if (value >= 25 && value < 30) {
+  setMessage("Overweight  Try to exercise more.")
+} else {
+  setMessage("Obese  Consider a healthier lifestyle.")
+}
 }
 const handleReset =() => {
   setHeight('')
   setWeight('')
   setbmi(null)
+  setMessage('')
 }
 
   return (
@@ -50,7 +62,10 @@ const handleReset =() => {
         <button className="calculate" type="submit">Calculate</button>
         <button className="reset" type="button" onClick={handleReset}>Clear</button>
         </div>
-        {bmi && <h3>Your BMI is: {bmi}</h3>}
+        {bmi && <>
+        <h3>Your BMI: {bmi}</h3>
+        <p>{message}</p>
+        </>}
       </form> 
     </div>
     </div>      
