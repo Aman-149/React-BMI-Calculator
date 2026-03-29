@@ -12,6 +12,10 @@ export const App = () => {
       alert('Please enter both height and weight')
       return
     }
+    if (height <=0 || weight <=0){
+      alert('Height and weight must be positive numbers')
+      return
+    }
   const h= height/100
   const value =(weight/(h*h)).toFixed(2)
   setbmi(value)
